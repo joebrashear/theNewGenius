@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 const routes = require('./routes/api');
 
+// mongodb+srv://joebrashear:MerryChristmas@cluster0-k53pf.mongodb.net/test?retryWrites=true&w=majority
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/researchweb', {
     useNewUrlParser: true,
     useUnifiedTopology: true
