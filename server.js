@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 const routes = require('./routes/api');
 
 // mongodb+srv://joebrashear:MerryChristmas@cluster0-k53pf.mongodb.net/test?retryWrites=true&w=majority
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/researchweb', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://joebrashear:MerryChristmas@cluster0-k53pf.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -30,5 +30,9 @@ app.use('/api', routes);
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }
+
+app.get("*", (req, res) => {
+    res.sendfile(path.join(__dirname, "client", "build", "index.html"));
+  });
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
